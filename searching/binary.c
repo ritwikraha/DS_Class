@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 void main(){
-	int arr[5];//input array
+	
+	int size;
+	printf("ENTER THE SIZE OF THE ARRAY\n");
+	scanf("%d",&size);
+	int arr[size];//array is created
 	
 	int counter=0;
 	int f=0;
@@ -12,7 +16,7 @@ void main(){
 	int up=4,lo=0,m=(up+lo)/2,i=0,search=0;
 	
 	//array input 
-	for(i=0;i<5;i++){
+	for(i=0;i<size;i++){
 		printf("\nENTER THE ELEMENT");
 		scanf("%d",&arr[i]);
 	}
@@ -33,6 +37,7 @@ void main(){
 			lo=m+1;
 		}
 		else{
+			//print mid
 			f=1;
 			printf("\nFOUND\n");
 			printf("counter:%d\n",counter);
