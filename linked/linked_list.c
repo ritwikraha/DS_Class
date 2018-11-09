@@ -134,10 +134,28 @@ void display(){
 }//end of display
 
 void count(){
-	
+	int c=0;
+	struct node *temp=start;
+	while(temp != NULL){
+		c++;
+		temp=temp->link;
+	}
+	printf("COUNTS= %d \n",c);
 }
 
 void rev(){
+	//uisng iterative method
+	
+	struct node * prev=NULL;
+	struct node * pres=start;
+	struct node * next;
+	while(pres != NULL){
+		next=pres->link;
+		pres->link=prev;
+		prev=pres;
+		pres=next;
+	}
+	start=prev;
 	
 }
 
