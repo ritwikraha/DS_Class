@@ -47,7 +47,12 @@ void main(){
 				rev();
 				break;
 			case 7:
-				search();
+				if(search() == 1){
+					printf("FOUND \n");
+				}
+				else{
+					printf("NOT FOUND \n");
+				}
 				break;
 			case 8:
 				printf("PROGRAM TERMINATED\n");
@@ -159,6 +164,16 @@ void rev(){
 	
 }
 
-void search(){
-	
+int search(){
+	printf("ENTER  A NUMBER \n");
+	int number;
+	scanf("%d",&number);
+	struct node * temp=start;
+	while(temp != NULL){
+		if(temp->info == number){
+			return 1;
+		}
+		temp=temp->link;
+	}
+	return 0;
 }
