@@ -90,7 +90,6 @@ void addition(){
 	}
 	else{
 		for(i=0;i<index-1;i++){
-			printf("hello\n");
 			temp=temp->link;
 		}
 		newNode->link=temp->link;
@@ -99,7 +98,25 @@ void addition(){
 }
 
 void del(){
-	
+	int index;
+	printf("ENTER THE INDEX\n");
+	scanf("%d",&index);
+	struct node * temp=start;
+	if(index == 0){
+		start=temp->link;
+		printf("%d GONE \n",temp->info);
+		free(temp);
+	}
+	else{
+		for(i=0;i<index-1;i++){
+			printf("hello\n");
+			temp=temp->link;
+		}
+		struct node * hold=temp->link;
+		temp->link=temp->link->link;
+		printf("%d GONE \n",hold->info);
+		free(hold);
+	}	
 }
 
 void display(){
