@@ -1,8 +1,9 @@
 #include <stdio.h>
-#define MAX 20
-int arr[MAX];
-//here we need only top
-int top=-1;
+struct node{
+	int data;
+	struct node * link;
+} *front=NULL,*rear=NULL;
+
 void main(){
 	int choice;
 	while(1){
@@ -31,31 +32,41 @@ void main(){
 void push(){
 	printf("INSIDE PUSH\n");
 	int num;
-	if(top == MAX-1){
-		//OVERFLOW
-		printf("OVERFLOW\n");
-		return;
-	}
 	printf("ENTER THE ELEMENT\n");
 	scanf("%d",&num);
-	arr[++top]=num;
+	struct node * newNode=(struct node *)malloc(sizeof(struct node));
+	newNode->data = num;
+	if(front == NULL){
+		//first element
+		front=newNode;
+		rear=newNode;
+		newNode->link=NULL;
+		return;
+	}
+	rear->link=newNode;
+	newNode->link=NULL;
+	rear=newNode;
 }
 
 void pop(){
 	printf("INSIDE POP\n");
-	if(top == -1)
+	if(front == NULL)
 	{
 		//underflow
 		printf("UNDERFLOW\n");
 		return;
 	}
-	printf("THE POPPED NUMBER IS %d \n",arr[top--]);
+	struct node * temp= front;
+	printf("THE POPPED NUMBER IS %d \n",temp->data);
+	front=temp->link;
+	free(temp);
 }
 
 void display(){
 	printf("INSIDE DISPLAY\n");
-	int i;
-	for(i=top;i>=0;i--){
-		printf("%d\n",arr[i]);
+	struct node * temp= front;
+	while(temp != NULL){
+		printf("%d \n",temp->data);
+		temp=temp->link;
 	}
 }
