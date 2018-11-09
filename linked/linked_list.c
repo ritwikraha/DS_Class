@@ -150,7 +150,9 @@ void count(){
 
 void rev(){
 	//uisng iterative method
-	
+	if(start == NULL){
+		return;
+	}
 	struct node * prev=NULL;
 	struct node * pres=start;
 	struct node * next;
