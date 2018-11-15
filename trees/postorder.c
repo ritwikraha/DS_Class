@@ -20,7 +20,9 @@ void main(){
 	root->right=createNode(3);
 	root->left->left=createNode(4);
 	root->left->right=createNode(5);
-	
+	//      1
+	//  2       3
+	//4  5  null  null 
 	postOrder(root);
 }
 
