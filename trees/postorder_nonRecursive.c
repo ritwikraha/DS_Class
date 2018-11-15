@@ -45,32 +45,31 @@ void main(){
 	//  2       3
 	//4  5  null  null 
 	
-//	struct node * root = createNode(1);
-//	root->left=createNode(2);
-//	root->left->left=createNode(3);
-//	root->left->right=createNode(4);
-//	root->left->right->left=createNode(5);
-//	root->right=createNode(6);
-//	root->right->right=createNode(7);
-//	root->right->right->right=createNode(8);
-	
-	
-	inorder(root);
+	postorder(root);
 }
 
-void inorder(struct node * ptr){
+void postorder(struct node * ptr){
+	struct node * temp;
 	while((top != -1) || (ptr != NULL)){
 		if(ptr != NULL){
 			push(ptr);
 			ptr=ptr->left;
 		}
 		else{
-			ptr=pop();
-			printf("%d\n",ptr->data);
-			ptr=ptr->right;
-			
+			temp=stack[top]->right;
+			if(temp == NULL){
+				temp=pop();
+				printf("%d\n",temp->data);
+				while((top != -1) && (temp == stack[top]->right)){
+					temp=pop();
+					printf("%d\n",temp->data);
+				}
+			}
+			else{
+				ptr=temp;
+			}
 		}
-	}	
+	}
 }
 
 
