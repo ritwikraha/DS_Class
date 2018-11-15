@@ -46,15 +46,21 @@ void main(){
 	preorder(root);
 }
 
+//NODE LEFT RIGHT
 void preorder(struct node * ptr){
 	push(ptr);
+	//pushed the root
 	struct node * temp;
 	while(top != -1){
 		temp = pop();
+		//popped root
 		if(temp != NULL){
 			printf("%d\n",temp->data);
 			push(temp->right);
+			//pushed right
 			push(temp->left);
+			//pushed left
+			//stack performs last in first out, so left goes later
 		}
 	}
 	

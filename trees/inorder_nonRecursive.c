@@ -59,15 +59,20 @@ void main(){
 }
 
 void inorder(struct node * ptr){
+	//ptr is root
 	while((top != -1) || (ptr != NULL)){
 		if(ptr != NULL){
 			push(ptr);
+			//pushed current pointer
 			ptr=ptr->left;
+			//pointer points left
 		}
 		else{
+			//if current is null,pop node go to right
 			ptr=pop();
 			printf("%d\n",ptr->data);
 			ptr=ptr->right;
+			//goes to right
 			
 		}
 	}	
